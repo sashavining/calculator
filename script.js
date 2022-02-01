@@ -25,16 +25,22 @@ function divide(num1, num2) {
 function operate(num1, operator, num2) { 
     let result = "";
     switch (operator) {
-        case "add": 
+        case "+": 
             result = add(num1, num2)
             break;
-        case "subtract":
+        case "-": 
             result = subtract(num1, num2)
             break;
-        case "multiply":
+        case "*":
             result = multiply(num1, num2)
             break;
-        case "divide":
+        case "x":
+            result = multiply(num1, num2)
+            break;
+        case "/":
+            result = divide(num1, num2)
+            break;
+        case "%":
             result = divide(num1, num2)
             break;
     
@@ -70,7 +76,10 @@ inputs.forEach((input) => {
         if (input.textContent == +input.textContent) {
             stringToBeEvaluated += input.textContent
             computerLegibleString += input.textContent
-        } else {
+        } else if (input.textContent == ".") {
+            stringToBeEvaluated += input.textContent
+            computerLegibleString += input.textContent
+        }  else {
             stringToBeEvaluated += " " + input.textContent + " "
             computerLegibleString += "," + input.id + ","
         }
@@ -94,6 +103,7 @@ let fifthResult;
 let sixthResult;
 
 function outputText(array) {
+    console.log("butts" + array);
     if (array[2]) {
         firstResult = Number(operate(array[0], array[1], array[2])).toFixed(2);
         if ((firstResult.toString()).length > 10) {
@@ -191,23 +201,39 @@ function convertLongNumberstoExponential (number) {
 document.addEventListener('keydown', takeUserInput);
 
 function takeUserInput(e) {
-    let slicedCode = `${e.code}`.slice(5,6);;
-    console.log(`${e.code}`);
-    if (+slicedCode == slicedCode) {
-        stringToBeEvaluated += slicedCode
-        computerLegibleString += slicedCode
+    if (+`${e.key}` == `${e.key}`) {
+        stringToBeEvaluated += `${e.key}`
+        computerLegibleString += `${e.key}`
 
-    } else {
-        stringToBeEvaluated += " " + slicedCode + " "
-        computerLegibleString += "," + slicedCode + ","
+    } else if (
+        `${e.key}` == "+" ||
+        `${e.key}` == "-" ||
+        `${e.key}` == "x" ||
+        `${e.key}` == "*" ||
+        `${e.key}` == "/" ||
+        `${e.key}` == "%") {
+            stringToBeEvaluated += " " + `${e.key}` + " "
+            computerLegibleString += "," + `${e.key}` + ","
+    } else if (`${e.key}` == "Backspace"){
+            stringToBeEvaluated = stringToBeEvaluated.slice(0, -1);
+            computerLegibleString = computerLegibleString.slice(0, -1);
+            computerLegibleArray.pop();
+    } else if (`${e.key}` == ".") {
+        stringToBeEvaluated += `${e.key}`
+        computerLegibleString += `${e.key}`
     }
-
+    if (!computerLegibleArray[2]) {
+        lowerDisplay.textContent = "";
+    }
     if (computerLegibleArray[13]) { 
         clearAll();
     } else if (stringToBeEvaluated.length > 20) {
         stringToBeEvaluated = stringToBeEvaluated.slice(0, 20);
     }
+
     upperDisplay.textContent = stringToBeEvaluated; 
     computerLegibleArray = computerLegibleString.split(","); 
     outputText(computerLegibleArray);
+    console.log(computerLegibleArray);
 };
+
