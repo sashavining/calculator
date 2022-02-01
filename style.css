@@ -1,0 +1,97 @@
+*{
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.calculatorBody{
+    background-color:black;
+    border-radius:40px;
+    border: 2px solid darkgray;
+    margin: 0 auto;
+    margin-top:10%;
+    height:530px;
+    width:290px;
+}
+
+.battery{
+    width:60px;
+    margin-left:auto;
+}
+
+.banner{
+    font-size:10px;
+    font-weight:500;
+    padding-top:25px;
+    padding-left:30px;
+    padding-right:20px;
+    display:flex;
+    justify-content: flex-start;
+}
+
+.upperDisplay{
+    padding-top:50px;
+    font-size:20px;
+    padding-left:35px;
+    height:30px;
+}
+.lowerDisplay{
+    text-align:right;
+    height:50px;
+    font-size:40px;
+    font-weight:100;
+    padding-right:35px;
+}
+
+.buttonGrid{
+    display:grid;
+    padding:20px;
+    margin-left:10px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap:10px;
+    height:290px;
+    width:230px;
+}
+
+.button{
+    border-radius:50%;
+    text-align: center;
+    padding-top:11px;
+    font-size: 25px;
+}
+
+.operand:active {
+    background-color: rgb(187, 187, 187);
+}
+
+.operator:active{
+    background-color:rgb(255, 221, 159);
+}
+
+.operand{
+    background-color: rgb(49, 49, 49);
+}
+
+.operator{
+    background-color: orange;
+}
+
+.operator.greyBackground{
+    background-color:darkgray;
+    color:rgb(49, 49, 49);
+}
+
+.spanTwo{
+    grid-column: 1 / span 2;
+    border-radius: 30px;
+    text-align:left;
+    padding-left:20px;
+}
+
+.bottomBar{
+    border-radius: 30px;
+    height:3px;
+    width:30%;
+    background-color: whitesmoke;
+    margin: 0 auto;
+    margin-top:20px;
+}
